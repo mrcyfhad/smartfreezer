@@ -1,0 +1,5 @@
+pytest==8.4.2
+flake8
+coverage
+
+
