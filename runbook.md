@@ -1,16 +1,19 @@
-SmartFreezer Runbook
+# 🧊 SmartFreezer Runbook
 
-1. Overview
-SmartFreezer monitors freezer temperature and handles offline data.
+## 1. Overview
+SmartFreezer monitors freezer temperature and handles offline data.  
 This runbook describes how to deploy, rollback, and troubleshoot the application.
 
+---
 
-2. Deployment Steps
+## 2. Deployment Steps
 
-1.Ensure all tests and lint checks pass locally:
+1. **Ensure all tests and lint checks pass locally:**
 
+```bash
 flake8 src/
 coverage run -m pytest && coverage report -m
+
 
 2.Build and tag the Docker image:
 
