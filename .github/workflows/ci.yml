@@ -1,0 +1,40 @@
+name: SmartFreezer CI
+
+# Trigger this workflow when pushing or opening a PR to main branch
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Get your code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Step 4: Lint your code for style issues
+      - name: Lint code
+        run: flake8 src/
+
+      # Step 5: Run tests and measure coverage
+      - name: Run tests with coverage
+        run: |
+          coverage run -m pytest
+          coverage report -m
+
